@@ -1,0 +1,473 @@
+// !$*UTF8*$!
+{
+	00E6828EFEC88D1A11DB9C8B /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 130F8B98001BDF0A11CA292A;
+		activeTarget = 0A8B99D50B8F57BB003CD01B /* SlowCTMonitor */;
+		addToTargets = (
+		);
+		breakpoints = (
+			2CD71EB70EF941B0006CFCBD /* SettingWindow.java:344 */,
+			2C92C2370F03419B00E7062D /* SettingWindow.java:40 */,
+			2C92C23C0F03447800E7062D /* SettingWindow.java:121 */,
+		);
+		codeSenseManager = 2C4D19490EF66547007774A9 /* Code sense */;
+		executables = (
+			130F8B98001BDF0A11CA292A,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXErrorsWarningsDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXErrorsWarningsDataSource_LocationID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					300,
+					163,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXErrorsWarningsDataSource_TypeID,
+					PBXErrorsWarningsDataSource_MessageID,
+					PBXErrorsWarningsDataSource_LocationID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXExecutablesDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXExecutablesDataSource_NameID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					22,
+					300,
+					161,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXExecutablesDataSource_ActiveFlagID,
+					PBXExecutablesDataSource_NameID,
+					PBXExecutablesDataSource_CommentsID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					577,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					537,
+					60,
+					20,
+					48,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 251863553;
+			PBXWorkspaceStateSaveDate = 251863553;
+		};
+		perUserProjectItems = {
+			2C6DB7C40F01C1FA006CA01C /* PBXTextBookmark */ = 2C6DB7C40F01C1FA006CA01C /* PBXTextBookmark */;
+			2C6DB7CC0F01C1FA006CA01C /* PBXTextBookmark */ = 2C6DB7CC0F01C1FA006CA01C /* PBXTextBookmark */;
+			2C6DB7CD0F01C1FA006CA01C /* PBXTextBookmark */ = 2C6DB7CD0F01C1FA006CA01C /* PBXTextBookmark */;
+			2C6DB8070F01D240006CA01C /* PBXTextBookmark */ = 2C6DB8070F01D240006CA01C /* PBXTextBookmark */;
+			2C6DB80D0F01D240006CA01C /* PBXTextBookmark */ = 2C6DB80D0F01D240006CA01C /* PBXTextBookmark */;
+			2C6DB87C0F020319006CA01C /* PBXTextBookmark */ = 2C6DB87C0F020319006CA01C /* PBXTextBookmark */;
+			2C6DB8810F020319006CA01C /* PBXTextBookmark */ = 2C6DB8810F020319006CA01C /* PBXTextBookmark */;
+			2C6DB8D20F020A69006CA01C /* PBXTextBookmark */ = 2C6DB8D20F020A69006CA01C /* PBXTextBookmark */;
+			2C6DB8D90F020A69006CA01C /* PBXTextBookmark */ = 2C6DB8D90F020A69006CA01C /* PBXTextBookmark */;
+			2C6DB94D0F031FDD006CA01C /* PBXTextBookmark */ = 2C6DB94D0F031FDD006CA01C /* PBXTextBookmark */;
+			2C92C2970F036AA500E7062D /* PBXTextBookmark */ = 2C92C2970F036AA500E7062D /* PBXTextBookmark */;
+			2C92C3180F04828B00E7062D /* PBXTextBookmark */ = 2C92C3180F04828B00E7062D /* PBXTextBookmark */;
+			2C92C31C0F048E3F00E7062D /* PBXTextBookmark */ = 2C92C31C0F048E3F00E7062D /* PBXTextBookmark */;
+			2C92C31E0F048E3F00E7062D /* PBXTextBookmark */ = 2C92C31E0F048E3F00E7062D /* PBXTextBookmark */;
+		};
+		sourceControlManager = 2C4D19480EF66547007774A9 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	0A0DFDF50B94D28A00E4E714 /* java */ = {
+		isa = PBXFileReference;
+		explicitFileType = "compiled.mach-o.executable";
+		name = java;
+		path = /usr/bin/java;
+		sourceTree = "<absolute>";
+	};
+	0A8B99B20B8F56A4003CD01B /* build.xml */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {755, 924}}";
+			sepNavSelRange = "{1337, 56}";
+			sepNavVisRange = "{803, 1169}";
+			sepNavVisRect = "{{0, 174}, {973, 669}}";
+			sepNavWindowFrame = "{{61, 149}, {1012, 742}}";
+		};
+	};
+	0A8B99D50B8F57BB003CD01B /* SlowCTMonitor */ = {
+		activeExec = 0;
+	};
+	130F8B98001BDF0A11CA292A = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+			YES,
+			YES,
+		);
+		argumentStrings = (
+			"-Dfile.encoding=UTF8",
+			"-cp SlowCTMonitor.jar SlowCTMonitor",
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+			"PBXLSLaunchAction-0" = {
+				PBXLSLaunchAction = 0;
+				PBXLSLaunchStartAction = 1;
+				PBXLSLaunchStdioStyle = 2;
+				PBXLSLaunchStyle = 0;
+				class = PBXLSRunLaunchConfig;
+				displayName = "Executable Runner";
+				identifier = com.apple.Xcode.launch.runConfig;
+				remoteHostInfo = "";
+				startActionInfo = "";
+			};
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = JavaDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		launchableReference = 0A0DFDF50B94D28A00E4E714 /* java */;
+		libgmallocEnabled = 0;
+		sourceDirectories = (
+		);
+		startupPath = dist;
+	};
+	2C4D19480EF66547007774A9 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+		scmType = "";
+	};
+	2C4D19490EF66547007774A9 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	2C6DB7990F01BC7E006CA01C /* MonitorWindow.java */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.java;
+		name = MonitorWindow.java;
+		path = /Users/tkurita/Dev/Projects/SlowCTMonitor/SlowCTMonitor/src/MonitorWindow.java;
+		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {785, 4468}}";
+			sepNavSelRange = "{6704, 41}";
+			sepNavVisRange = "{6054, 779}";
+			sepNavWindowFrame = "{{38, 119}, {1049, 793}}";
+		};
+	};
+	2C6DB7C40F01C1FA006CA01C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2CD71D760EF8EA2D006CFCBD /* memo.txt */;
+		name = "memo.txt: 9";
+		rLen = 0;
+		rLoc = 300;
+		rType = 0;
+		vrLen = 397;
+		vrLoc = 0;
+	};
+	2C6DB7CC0F01C1FA006CA01C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2CD71D760EF8EA2D006CFCBD /* memo.txt */;
+		name = "memo.txt: 9";
+		rLen = 0;
+		rLoc = 300;
+		rType = 0;
+		vrLen = 397;
+		vrLoc = 0;
+	};
+	2C6DB7CD0F01C1FA006CA01C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2C6DB7CE0F01C1FA006CA01C /* SlowCTMonitor.java */;
+		name = "SlowCTMonitor.java: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 200;
+		vrLoc = 0;
+	};
+	2C6DB7CE0F01C1FA006CA01C /* SlowCTMonitor.java */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.java;
+		name = SlowCTMonitor.java;
+		path = /Users/tkurita/Dev/Projects/SlowCTMonitor/SlowCTMonitor/src/SlowCTMonitor.java;
+		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {755, 517}}";
+			sepNavSelRange = "{195, 0}";
+			sepNavVisRange = "{0, 229}";
+		};
+	};
+	2C6DB8070F01D240006CA01C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2C6DB8080F01D240006CA01C /* SlowCTMonitor.1 */;
+		name = "SlowCTMonitor.1: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1741;
+		vrLoc = 0;
+	};
+	2C6DB8080F01D240006CA01C /* SlowCTMonitor.1 */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = text.man;
+		name = SlowCTMonitor.1;
+		path = /Users/tkurita/Dev/Projects/SlowCTMonitor/SlowCTMonitor/resources/SlowCTMonitor.1;
+		sourceTree = "<absolute>";
+	};
+	2C6DB80D0F01D240006CA01C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2C6DB80E0F01D240006CA01C /* SlowCTMonitor.1 */;
+		name = "SlowCTMonitor.1: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1741;
+		vrLoc = 0;
+	};
+	2C6DB80E0F01D240006CA01C /* SlowCTMonitor.1 */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = text.man;
+		name = SlowCTMonitor.1;
+		path = /Users/tkurita/Dev/Projects/SlowCTMonitor/SlowCTMonitor/resources/SlowCTMonitor.1;
+		sourceTree = "<absolute>";
+	};
+	2C6DB87C0F020319006CA01C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2C6DB87D0F020319006CA01C /* Manifest */;
+		name = "Manifest: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 26;
+		vrLoc = 0;
+	};
+	2C6DB87D0F020319006CA01C /* Manifest */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = text;
+		name = Manifest;
+		path = /Users/tkurita/Dev/Projects/SlowCTMonitor/SlowCTMonitor/resources/Manifest;
+		sourceTree = "<absolute>";
+	};
+	2C6DB8810F020319006CA01C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2C6DB8820F020319006CA01C /* Manifest */;
+		name = "Manifest: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 26;
+		vrLoc = 0;
+	};
+	2C6DB8820F020319006CA01C /* Manifest */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = text;
+		name = Manifest;
+		path = /Users/tkurita/Dev/Projects/SlowCTMonitor/SlowCTMonitor/resources/Manifest;
+		sourceTree = "<absolute>";
+	};
+	2C6DB8D20F020A69006CA01C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2C6DB8D30F020A69006CA01C /* IntegerInputVerifier.java */;
+		name = "IntegerInputVerifier.java: 3";
+		rLen = 0;
+		rLoc = 79;
+		rType = 0;
+		vrLen = 415;
+		vrLoc = 0;
+	};
+	2C6DB8D30F020A69006CA01C /* IntegerInputVerifier.java */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.java;
+		name = IntegerInputVerifier.java;
+		path = /Users/tkurita/Dev/Projects/SlowCTMonitor/SlowCTMonitor/src/IntegerInputVerifier.java;
+		sourceTree = "<absolute>";
+	};
+	2C6DB8D90F020A69006CA01C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2C6DB8DA0F020A69006CA01C /* IntegerInputVerifier.java */;
+		name = "IntegerInputVerifier.java: 3";
+		rLen = 0;
+		rLoc = 79;
+		rType = 0;
+		vrLen = 415;
+		vrLoc = 0;
+	};
+	2C6DB8DA0F020A69006CA01C /* IntegerInputVerifier.java */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.java;
+		name = IntegerInputVerifier.java;
+		path = /Users/tkurita/Dev/Projects/SlowCTMonitor/SlowCTMonitor/src/IntegerInputVerifier.java;
+		sourceTree = "<absolute>";
+	};
+	2C6DB94D0F031FDD006CA01C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2CD71D760EF8EA2D006CFCBD /* memo.txt */;
+		name = "memo.txt: 16";
+		rLen = 0;
+		rLoc = 639;
+		rType = 0;
+		vrLen = 626;
+		vrLoc = 0;
+	};
+	2C92C2370F03419B00E7062D /* SettingWindow.java:40 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 2CD71EB50EF941B0006CFCBD /* SettingWindow.java */;
+		functionName = "SettingWindow(String title)";
+		hitCount = 1;
+		ignoreCount = 0;
+		lineNumber = 40;
+		modificationTime = 251872290.809775;
+		state = 1;
+	};
+	2C92C23C0F03447800E7062D /* SettingWindow.java:121 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 2CD71EB50EF941B0006CFCBD /* SettingWindow.java */;
+		functionName = "SettingWindow(String title)";
+		hitCount = 1;
+		ignoreCount = 0;
+		lineNumber = 121;
+		modificationTime = 251872378.970688;
+		state = 1;
+	};
+	2C92C2970F036AA500E7062D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2C6DB7CE0F01C1FA006CA01C /* SlowCTMonitor.java */;
+		name = "SlowCTMonitor.java: 7";
+		rLen = 0;
+		rLoc = 195;
+		rType = 0;
+		vrLen = 229;
+		vrLoc = 0;
+	};
+	2C92C3180F04828B00E7062D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2C6DB7990F01BC7E006CA01C /* MonitorWindow.java */;
+		name = "MonitorWindow.java: 234";
+		rLen = 0;
+		rLoc = 7455;
+		rType = 0;
+		vrLen = 762;
+		vrLoc = 6876;
+	};
+	2C92C31C0F048E3F00E7062D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2C92C31D0F048E3F00E7062D /* MonitorWindow.java */;
+		name = "MonitorWindow.java: 234";
+		rLen = 0;
+		rLoc = 7455;
+		rType = 0;
+		vrLen = 791;
+		vrLoc = 6874;
+	};
+	2C92C31D0F048E3F00E7062D /* MonitorWindow.java */ = {
+		isa = PBXFileReference;
+		name = MonitorWindow.java;
+		path = /Users/tkurita/Dev/Projects/SlowCTMonitor/SlowCTMonitor/src/MonitorWindow.java;
+		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {755, 4694}}";
+			sepNavSelRange = "{7455, 0}";
+			sepNavVisRange = "{6874, 791}";
+		};
+	};
+	2C92C31E0F048E3F00E7062D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2CD71D760EF8EA2D006CFCBD /* memo.txt */;
+		name = "memo.txt: 17";
+		rLen = 0;
+		rLoc = 640;
+		rType = 0;
+		vrLen = 691;
+		vrLoc = 0;
+	};
+	2CD71D760EF8EA2D006CFCBD /* memo.txt */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {486, 377}}";
+			sepNavSelRange = "{640, 0}";
+			sepNavVisRange = "{0, 691}";
+			sepNavVisRect = "{{0, 0}, {487, 244}}";
+			sepNavWindowFrame = "{{707, 284}, {545, 449}}";
+		};
+	};
+	2CD71EB50EF941B0006CFCBD /* SettingWindow.java */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.java;
+		name = SettingWindow.java;
+		path = /Users/tkurita/Dev/Projects/SlowCTMonitor/SlowCTMonitor/src/SettingWindow.java;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {642, 5408}}";
+			sepNavSelRange = "{7908, 142}";
+			sepNavVisRange = "{0, 1962}";
+			sepNavWindowFrame = "{{15, 146}, {697, 787}}";
+		};
+	};
+	2CD71EB70EF941B0006CFCBD /* SettingWindow.java:344 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 2CD71EB50EF941B0006CFCBD /* SettingWindow.java */;
+		functionName = "readData()";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 344;
+		modificationTime = 251872284.601918;
+		state = 1;
+	};
+}

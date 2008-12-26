@@ -1,0 +1,5 @@
+100		# current out at timming1
+100		# particle out at timming1
+100		# current out at timming2
+100		# particle out at timming2
+100		# BS count
