@@ -13,7 +13,7 @@ class SettingWindow extends JFrame {
     JFormattedTextField particleOutFactorField = new JFormattedTextField(nf);
     JFormattedTextField harmonicsField = new JFormattedTextField(inf);
     JFormattedTextField currentFactorField = new JFormattedTextField(nf);
-    JFormattedTextField particleFactorField = new JFormattedTextField(nf);
+    JFormattedTextField chargeFactorField = new JFormattedTextField(nf);
     JFormattedTextField chargeField = new JFormattedTextField(inf);
     JFormattedTextField timming1Field = new JFormattedTextField(nf);
     JFormattedTextField timming2Field = new JFormattedTextField(nf);
@@ -29,7 +29,7 @@ class SettingWindow extends JFrame {
 	double particleOutFactor = 1;
 	int harmonics = 1;
 	double currentFactor = 1;
-	double particleFactor = 1;
+	double chargeFactor = 1;
 	int charge = 1;
 	float timming1 = 10;
 	float timming2 = 600;
@@ -64,23 +64,23 @@ class SettingWindow extends JFrame {
         String lblarray[] = {
             "電流 OUT 校正係数",
             "粒子数 OUT 校正係数",
-            "Harmonics",
+            "タイミング 1",
+            "タイミング 2",
             "電流 校正係数",
             "粒子数 校正係数",
             "価数",
-            "タイミング 1",
-            "タイミング 2"
+            "Harmonics"
         };
         
         JTextField fieldarray[] = {
             currentOutFactorField,
             particleOutFactorField,
-            harmonicsField,
-            currentFactorField,
-            particleFactorField,
-            chargeField,
             timming1Field,
-            timming2Field
+            timming2Field,
+            currentFactorField,
+            chargeFactorField,
+            chargeField,
+            harmonicsField
         };
         TextFieldListener tlistner = new TextFieldListener();
         for (int i=0; i<lblarray.length; i++) {
@@ -215,11 +215,11 @@ class SettingWindow extends JFrame {
 		ps.format("%f      %s\n", currentOutFactor, "# current out factor");
 		ps.printf("%f      %s\n", particleOutFactor, "# particles out factor");
 		ps.printf("%d      %s\n", harmonics, "# harmonics");
-		ps.printf("%f      %s\n", currentFactor, "# current factor");
-		ps.printf("%f      %s\n", particleFactor, "# particle factor");
-		ps.printf("%d      %s\n", charge, "# charge");
-		ps.printf("%f      %s\n", timming1, "# timming 1");
+        ps.printf("%f      %s\n", timming1, "# timming 1");
 		ps.printf("%f      %s\n", timming2, "# timming 2");
+		ps.printf("%f      %s\n", currentFactor, "# current factor");
+		ps.printf("%f      %s\n", chargeFactor, "# particle factor");
+		ps.printf("%d      %s\n", charge, "# charge");
 		ps.close();
 	}
 	
@@ -262,9 +262,9 @@ class SettingWindow extends JFrame {
 		harmonics = Integer.parseInt(aValue);
 	}
 
-	public void setParticleFactor(String aValue) {
-		particleFactorField.setText(aValue);
-		particleFactor = Double.parseDouble(aValue);
+	public void setChargeFactor(String aValue) {
+		chargeFactorField.setText(aValue);
+		chargeFactor = Double.parseDouble(aValue);
 	}
 
 	public void setCurrentFactor(String aValue) {
@@ -294,18 +294,18 @@ class SettingWindow extends JFrame {
 			new ValueSetter() {void setValue(String aString) {
 			SettingWindow.this.setParticleOutFactor(aString);}},
 			new ValueSetter() {void setValue(String aString) {
-			SettingWindow.this.setHarmonics(aString);}},
+			SettingWindow.this.setTimming1(aString);}},
+			new ValueSetter() {void setValue(String aString) {
+			SettingWindow.this.setTimming2(aString);}},
 			new ValueSetter() {void setValue(String aString) {
 			SettingWindow.this.setCurrentFactor(aString);}},
 			new ValueSetter() {void setValue(String aString) {
-			SettingWindow.this.setParticleFactor(aString);}},
+			SettingWindow.this.setChargeFactor(aString);}},
 			new ValueSetter() {void setValue(String aString) {
 			SettingWindow.this.setCharge(aString);}},
 			new ValueSetter() {void setValue(String aString) {
-			SettingWindow.this.setTimming1(aString);}},
-			new ValueSetter() {void setValue(String aString) {
-			SettingWindow.this.setTimming2(aString);}}
-		};
+			SettingWindow.this.setHarmonics(aString);}}
+        };
 		
 		try{
 			String str;
