@@ -25,10 +25,11 @@ class MonitorWindow extends Frame implements ActionListener{
 	double charge2;
 	double particles1;
 	double particles2;
-	int bsCount;
+	double bsCount;
 	double bsnA;
 	double bsnC;
-	
+
+    CheckboxGroup bsScaleCheckboxGroup = new CheckboxGroup();
     Checkbox bsScaleChboxes[] = {new Checkbox("100 pC/count"), 
                                  new Checkbox("1 pC/count")};
 	File dspoutFile = new File("dspout.txt");
@@ -91,15 +92,13 @@ class MonitorWindow extends Frame implements ActionListener{
 			bspanel.add(new Label(unitlabels[i], Label.LEFT), constraints);
 		}
 
-        CheckboxGroup grp = new CheckboxGroup();
-        bsScaleChboxes[0].setCheckboxGroup(grp);
-        bsScaleChboxes[1].setCheckboxGroup(grp);
+        bsScaleChboxes[0].setCheckboxGroup(bsScaleCheckboxGroup);
+        bsScaleChboxes[1].setCheckboxGroup(bsScaleCheckboxGroup);
         constraints.gridx = 0;
         constraints.gridy++;
         bspanel.add(bsScaleChboxes[0], constraints);
         constraints.gridx = 1;
         bspanel.add(bsScaleChboxes[1], constraints);
-        
         return bspanel;
     }
     
@@ -142,7 +141,19 @@ class MonitorWindow extends Frame implements ActionListener{
 	abstract class ValueSetter {
 		abstract void setValue(String aString);
 	}
-	
+
+    public void setBSScaleMode(int mode) {
+        bsScaleCheckboxGroup.setSelectedCheckbox(bsScaleChboxes[mode]);
+    }
+
+    private double getBSScale() {
+        double result = 0.001; //1 [pC]
+        if (bsScaleCheckboxGroup.getSelectedCheckbox().equals(bsScaleChboxes[0])) {
+            result = 0.1; // 100 [pC]
+        }
+        return result;
+    }
+    
 	public void setCurrent1(String aValue) {
 		currentField1.setText(aValue);
 		current1 = Double.parseDouble(aValue);
@@ -152,6 +163,16 @@ class MonitorWindow extends Frame implements ActionListener{
 		currentField2.setText(aValue);
 		current2 = Double.parseDouble(aValue);
 	}
+
+    public void setCharge1(String aValue) {
+		chargeField1.setText(aValue);
+		charge1 = Double.parseDouble(aValue);
+	}
+
+    public void setCharge2(String aValue) {
+		chargeField2.setText(aValue);
+		charge2 = Double.parseDouble(aValue);
+    }
 
 	public void setParticles1(String aValue) {
 		particlesField1.setText(aValue);
@@ -165,7 +186,11 @@ class MonitorWindow extends Frame implements ActionListener{
 
 	public void setBSCount(String aValue) {
 		bsCountField.setText(aValue);
-		bsCount = Integer.parseInt(aValue);
+		bsCount = Double.parseDouble(aValue);
+        bsnC = bsCount*getBSScale();
+        bsnCField.setText(Double.toString(bsnC));
+        bsnA = bsnC/2;
+        bsnAField.setText(Double.toString(bsnA));
 	}
 	
 	private String parseLine(String aLine) {
@@ -182,10 +207,14 @@ class MonitorWindow extends Frame implements ActionListener{
 			new ValueSetter() {void setValue(String aString) {
 								setCurrent1(aString);}}, 
 			new ValueSetter() {void setValue(String aString) {
+								setCharge1(aString);}},
+            new ValueSetter() {void setValue(String aString) {
 								setParticles1(aString);}},
 			new ValueSetter() {void setValue(String aString) {
 								setCurrent2(aString);}},
 			new ValueSetter() {void setValue(String aString) {
+								setCharge2(aString);}},
+            new ValueSetter() {void setValue(String aString) {
 								setParticles2(aString);}},
 			new ValueSetter() {void setValue(String aString) {
 								setBSCount(aString);}}
