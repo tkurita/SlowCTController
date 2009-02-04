@@ -197,6 +197,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x5165;&#x308c;&#x66ff;&#x3048;&#x2191;&#x2193;"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="swapButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

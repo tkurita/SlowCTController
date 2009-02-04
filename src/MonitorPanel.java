@@ -18,20 +18,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MonitorPanel extends javax.swing.JPanel {
-    private double charge1;
-    private double charge2;
-    private double bsCount;
-    private boolean hasValues = false;
-    private long updatedTime;
+    private DspOutData dspOutData;
 
     void updateTimmings(float t1, float t2) {
        timmingField1.setText(Float.toString(t1));
        timmingField2.setText(Float.toString(t2));
     }
-
-    abstract class ValueSetter {
-		abstract void setValue(String aString);
-	}
 
     public void setBSScaleMode(int mode) {
         bsScaleField.setSelectedIndex(mode);
@@ -52,116 +44,76 @@ public class MonitorPanel extends javax.swing.JPanel {
         return result;
     }
 
-	public void setCurrent1(String aValue) {
-		currentField1.setText(aValue);
+    public void setUpdateTimeField(long aValue) {
+        Date d = new Date(aValue);
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        updateTimeField.setText(df.format(d));
+    }
+    
+    public void setCurrentField1(double aValue) {
+		currentField1.setText(Double.toString(aValue));
 	}
 
-	public void setCurrent2(String aValue) {
-		currentField2.setText(aValue);
+	public void setCurrentField2(double aValue) {
+		currentField2.setText(Double.toString(aValue));
 	}
 
-    public void setCharge1(String aValue) {
-		chargeField1.setText(aValue);
-		charge1 = Double.parseDouble(aValue);
+    public void setChargeField1(double aValue) {
+		chargeField1.setText(Double.toString(aValue));
 	}
 
-    public void setCharge2(String aValue) {
-		chargeField2.setText(aValue);
-		charge2 = Double.parseDouble(aValue);
+    public void setChargeField2(double aValue) {
+		chargeField2.setText(Double.toString(aValue));
     }
 
-	public void setParticles1(String aValue) {
-		particlesField1.setText(aValue);
+	public void setParticlesField1(double aValue) {
+		particlesField1.setText(Double.toString(aValue));
 	}
 
-	public void setParticles2(String aValue) {
-		particlesField2.setText(aValue);
+	public void setParticlesField2(double aValue) {
+		particlesField2.setText(Double.toString(aValue));
 	}
 
-	public void setBSCount(String aValue) {
-		bsCountField.setText(aValue);
-		bsCount = Double.parseDouble(aValue);
-        double bsnC = bsCount*getBSScale();
+	public void setBSCountField(double aValue) {
+		bsCountField.setText(Double.toString(aValue));
+        double bsnC = aValue*getBSScale();
         bsnCField.setText(Double.toString(bsnC));
         double bsnA = bsnC/2;
         bsnAField.setText(Double.toString(bsnA));
 	}
 
-	private String parseLine(String aLine) {
-		String numpart = aLine;
-		int compos = aLine.indexOf("#");
-		if (compos > -1) {
-			numpart = aLine.substring(0, compos);
-		}
-		return numpart.trim();
-	}
+    public void setupData(DspOutData data) {
+        dspOutData = data;
+        setCurrentField1(dspOutData.getCurrent1());
+        setCurrentField2(dspOutData.getCurrent2());
+        setChargeField1(dspOutData.getCharge1());
+        setChargeField2(dspOutData.getCharge2());
+        setParticlesField1(dspOutData.getParticles1());
+        setParticlesField2(dspOutData.getParticles2());
+        setBSCountField(dspOutData.getBSCount());
+        setUpdateTimeField(dspOutData.getUpdatedTime());
+    }
 
-	private boolean setDataWithReader(BufferedReader reader) {
-		ValueSetter setters[] = {
-			new ValueSetter() {void setValue(String aString) {
-								setCurrent1(aString);}},
-			new ValueSetter() {void setValue(String aString) {
-								setCharge1(aString);}},
-            new ValueSetter() {void setValue(String aString) {
-								setParticles1(aString);}},
-			new ValueSetter() {void setValue(String aString) {
-								setCurrent2(aString);}},
-			new ValueSetter() {void setValue(String aString) {
-								setCharge2(aString);}},
-            new ValueSetter() {void setValue(String aString) {
-								setParticles2(aString);}},
-			new ValueSetter() {void setValue(String aString) {
-								setBSCount(aString);}}
-		};
+    public boolean setupDataWithFile(File dspoutFile) {
+        DspOutData data = new DspOutData();
+        boolean result = data.readData(dspoutFile);
+        if (result) {
+            setupData(data);
+        }
+        return result;
+    }
 
-		try{
-			String str;
-			for (int i = 0; i<setters.length; i++) {
-				if ((str = reader.readLine()) == null) break;
-				setters[i].setValue(parseLine(str));
-			}
-			reader.close();
-		} catch(IOException e) {
-            System.out.println(e);
-			return false;
-		}
-		return true;
-	}
-
-	public boolean readData(File dspoutFile) {
-		BufferedReader br;
-		if (dspoutFile.canRead()) {
-			try {
-				br = new BufferedReader(new FileReader(dspoutFile));
-			} catch (FileNotFoundException e) {
-				System.out.println(e);
-				return false;
-			}
-		} else {
-			return false;
-		}
-		boolean result = setDataWithReader(br);
-		try {
-			br.close();
-		} catch (IOException e) {
-			System.out.println(e);
-			result = false;
-		}
-        updatedTime = dspoutFile.lastModified();
-        Date d = new Date(updatedTime);
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        updateTimeField.setText(df.format(d));
-        hasValues = result;
-		return result;
-	}
-
+    public DspOutData getDspOutData() {
+        return dspOutData;
+    }
     public boolean hasValues() {
-        return hasValues;
+        return (dspOutData != null);
     }
 
     /** Creates new form MonitorPanel */
     public MonitorPanel() {
         initComponents();
+        dspOutData = null;
     }
 
     /** This method is called from within the constructor to

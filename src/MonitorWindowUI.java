@@ -38,9 +38,9 @@ public class MonitorWindowUI extends javax.swing.JFrame {
                 return;
             }
             if (extractionButton.isSelected()) {
-                extractionPanel.readData(dspoutFile);
+                extractionPanel.setupDataWithFile(dspoutFile);
             } else {
-                leakPanel.readData(dspoutFile);
+                leakPanel.setupDataWithFile(dspoutFile);
             }
         }
 	}
@@ -64,7 +64,7 @@ public class MonitorWindowUI extends javax.swing.JFrame {
         panelDefaultBackground = extractionPanel.getBackground();
         extractionButton.doClick();
         dspoutFile = new File("dspout.txt");
-        extractionPanel.readData(dspoutFile);
+        extractionPanel.setupDataWithFile(dspoutFile);
         leakPanel.setBSScaleMode(1);
         setupTimerTask();
     }
@@ -134,6 +134,11 @@ public class MonitorWindowUI extends javax.swing.JFrame {
         extractionPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         swapButton.setText("入れ替え↑↓");
+        swapButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                swapButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -206,11 +211,18 @@ public class MonitorWindowUI extends javax.swing.JFrame {
     }//GEN-LAST:event_extractionButtonActionPerformed
 
     private void leakButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leakButtonActionPerformed
-        // TODO add your handling code here:
-        // TODO add your handling code here:
         leakPanel.setBackground(panelDefaultBackground);
         extractionPanel.setBackground(Color.gray);
     }//GEN-LAST:event_leakButtonActionPerformed
+
+    private void swapButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_swapButtonActionPerformed
+       if (leakPanel.hasValues() && extractionPanel.hasValues()) {
+           DspOutData buff1 = leakPanel.getDspOutData();
+           DspOutData buff2 = extractionPanel.getDspOutData();
+           leakPanel.setupData(buff2);
+           extractionPanel.setupData(buff1);
+       }
+    }//GEN-LAST:event_swapButtonActionPerformed
 
     /**
     * @param args the command line arguments
