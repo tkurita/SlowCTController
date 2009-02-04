@@ -330,14 +330,16 @@ class MonitorWindow extends Frame implements ActionListener{
         setMenuBar(mb);
 		setupTimerTask();
     }
-        
+    /*
     public Frame showSettingWindow() {
-        SettingWindow win = SettingWindow.getInstance();
+        SettingWindow win = SettingWindow.getInstance(this);
         win.setVisible(true);
         return win;
     }
-        
+     */
+
     public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand() == "設定")  showSettingWindow();
+        //if (e.getActionCommand() == "設定")  showSettingWindow();
     }
+
 }

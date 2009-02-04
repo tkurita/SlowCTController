@@ -34,11 +34,12 @@ class SettingWindow extends JFrame {
 	float timming1 = 10;
 	float timming2 = 600;
     
-    private static SettingWindow instance = new SettingWindow("設定");
+    private static SettingWindow instance = null;
+    private MonitorWindowUI monitorWindow;
     
-    private SettingWindow(String title) {
+    private SettingWindow(String title, MonitorWindowUI aMonitorWindow) {
         super(title);
-
+        monitorWindow = aMonitorWindow;
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(400, 500);
         setBackground(Color.white);
@@ -230,7 +231,10 @@ class SettingWindow extends JFrame {
 		}
 	}
 	
-    public static SettingWindow getInstance() {
+    public static SettingWindow getInstance(MonitorWindowUI monitorWindow) {
+        if (instance == null) {
+             instance = new SettingWindow("設定", monitorWindow);
+        }
         return instance;
     }
     
@@ -277,11 +281,17 @@ class SettingWindow extends JFrame {
 		charge = Integer.parseInt(aValue);
 	}
 
+    public float getTimming1() {
+        return timming1;
+    }
 	public void setTimming1(String aValue) {
 		timming1Field.setText(aValue);
 		timming1 = Float.parseFloat(aValue);
 	}
 
+    public float getTimming2() {
+        return timming2;
+    }
 	public void setTimming2(String aValue) {
 		timming2Field.setText(aValue);
 		timming2 = Float.parseFloat(aValue);
@@ -375,6 +385,7 @@ class SettingWindow extends JFrame {
 			System.out.println(e);
 			result = false;
 		}
+        monitorWindow.updateTimmings(timming1, timming2);
 		return result;
 	}
 	
