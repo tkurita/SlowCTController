@@ -107,8 +107,10 @@ public class MonitorWindowUI extends javax.swing.JFrame {
         leakPanel = new MonitorPanel();
         extractionPanel = new MonitorPanel();
         swapButton = new javax.swing.JButton();
+        openSettingButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Slow CT Controller");
 
         modeButtonGroup.add(extractionButton);
         extractionButton.setFont(new java.awt.Font("MS UI Gothic", 0, 18)); // NOI18N
@@ -157,39 +159,48 @@ public class MonitorWindowUI extends javax.swing.JFrame {
             }
         });
 
+        openSettingButton.setFont(new java.awt.Font("MS UI Gothic", 0, 18)); // NOI18N
+        openSettingButton.setText("設定");
+        openSettingButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                openSettingButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(extractionPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 795, Short.MAX_VALUE)
+                    .addComponent(leakPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 795, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(extCurrentField, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2)
-                        .addGap(64, 64, 64)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(leakRateField, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(extractionPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 795, Short.MAX_VALUE)
-                            .addComponent(leakPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 795, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(leakButton)
-                                        .addGap(564, 564, 564)
-                                        .addComponent(swapButton))
-                                    .addComponent(extractionButton))
-                                .addGap(63, 63, 63)))))
+                                .addComponent(leakButton)
+                                .addGap(564, 564, 564)
+                                .addComponent(swapButton))
+                            .addComponent(extractionButton))
+                        .addGap(63, 63, 63)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(75, 75, 75)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(extCurrentField, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addGap(64, 64, 64)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(leakRateField, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, Short.MAX_VALUE)
+                .addComponent(openSettingButton)
+                .addGap(44, 44, 44))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,14 +218,15 @@ public class MonitorWindowUI extends javax.swing.JFrame {
                         .addComponent(swapButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(leakPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(extCurrentField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
                     .addComponent(leakRateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4)
+                    .addComponent(openSettingButton))
                 .addGap(24, 24, 24))
         );
 
@@ -241,6 +253,11 @@ public class MonitorWindowUI extends javax.swing.JFrame {
        }
     }//GEN-LAST:event_swapButtonActionPerformed
 
+    private void openSettingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openSettingButtonActionPerformed
+        settingWindow = SettingWindow.getInstance(this);
+        settingWindow.setVisible(true);
+    }//GEN-LAST:event_openSettingButtonActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -264,6 +281,7 @@ public class MonitorWindowUI extends javax.swing.JFrame {
     private MonitorPanel leakPanel;
     private javax.swing.JTextField leakRateField;
     private javax.swing.ButtonGroup modeButtonGroup;
+    private javax.swing.JButton openSettingButton;
     private javax.swing.JButton swapButton;
     // End of variables declaration//GEN-END:variables
 
