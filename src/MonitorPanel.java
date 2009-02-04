@@ -29,7 +29,7 @@ public class MonitorPanel extends javax.swing.JPanel {
         bsScaleField.setSelectedIndex(mode);
     }
 
-    private double getBSScale() {
+    public double getBSScale() {
         double result = 0.1;
         switch (bsScaleField.getSelectedIndex()) {
             case 0:
@@ -42,6 +42,10 @@ public class MonitorPanel extends javax.swing.JPanel {
                 break;
         }
         return result;
+    }
+
+    public String getBSnAFieldText() {
+        return bsnAField.getText();
     }
 
     public void setUpdateTimeField(long aValue) {

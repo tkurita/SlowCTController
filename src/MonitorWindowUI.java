@@ -37,11 +37,13 @@ public class MonitorWindowUI extends javax.swing.JFrame {
             } else {
                 return;
             }
+
             if (extractionButton.isSelected()) {
                 extractionPanel.setupDataWithFile(dspoutFile);
             } else {
                 leakPanel.setupDataWithFile(dspoutFile);
             }
+            dataUpdated();
         }
 	}
 
@@ -54,6 +56,21 @@ public class MonitorWindowUI extends javax.swing.JFrame {
         extractionPanel.updateTimmings(t1, t2);
         leakPanel.updateTimmings(t1, t2);
     }
+
+    public void dataUpdated() {
+        if (extractionPanel.hasValues() && leakPanel.hasValues()) {
+            extCurrentField.setText(extractionPanel.getBSnAFieldText());
+            DspOutData ext_data = extractionPanel.getDspOutData();
+            DspOutData leak_data = leakPanel.getDspOutData();
+            double ext_BS = ext_data.getBSCount()*extractionPanel.getBSScale();
+            double leak_BS = leak_data.getBSCount()*leakPanel.getBSScale();
+            double ext_acccharge = ext_data.getCharge2();
+            double leak_acccharge = leak_data.getCharge2();
+            double leakrate = (leak_BS/leak_acccharge)/(ext_BS/ext_acccharge) * 100;
+            leakRateField.setText(Double.toString(leakrate));
+        }
+    }
+
     /** Creates new form MonitorWindowUI */
     public MonitorWindowUI() {
         initComponents();
@@ -85,7 +102,7 @@ public class MonitorWindowUI extends javax.swing.JFrame {
         extCurrentField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        leakCurrentField = new javax.swing.JTextField();
+        leakRateField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         leakPanel = new MonitorPanel();
         extractionPanel = new MonitorPanel();
@@ -123,8 +140,8 @@ public class MonitorWindowUI extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("MS UI Gothic", 0, 18)); // NOI18N
         jLabel3.setText("漏れ");
 
-        leakCurrentField.setFont(new java.awt.Font("MS UI Gothic", 0, 18)); // NOI18N
-        leakCurrentField.setText("leakCurrentField");
+        leakRateField.setFont(new java.awt.Font("MS UI Gothic", 0, 18)); // NOI18N
+        leakRateField.setText("leakRateField");
 
         jLabel4.setFont(new java.awt.Font("MS UI Gothic", 0, 18)); // NOI18N
         jLabel4.setText("[%]");
@@ -156,7 +173,7 @@ public class MonitorWindowUI extends javax.swing.JFrame {
                         .addGap(64, 64, 64)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(leakCurrentField, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(leakRateField, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4))
                     .addGroup(layout.createSequentialGroup()
@@ -196,7 +213,7 @@ public class MonitorWindowUI extends javax.swing.JFrame {
                     .addComponent(extCurrentField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
-                    .addComponent(leakCurrentField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(leakRateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(24, 24, 24))
         );
@@ -244,8 +261,8 @@ public class MonitorWindowUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JToggleButton leakButton;
-    private javax.swing.JTextField leakCurrentField;
     private MonitorPanel leakPanel;
+    private javax.swing.JTextField leakRateField;
     private javax.swing.ButtonGroup modeButtonGroup;
     private javax.swing.JButton swapButton;
     // End of variables declaration//GEN-END:variables
