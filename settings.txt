@@ -1,10 +1,9 @@
-1        # current out factor
-12045.5  # particles out factor 10000*1.20455 for 0.022 [nC/V]
-10       # timming 1
-600      # timming 2
-0.011068 # current factor 1/(1.5/54.4)*(32767/10)[mA/digit]
-0.080874 # charge factor 10000*1.20455*0.022/32767/10
-1        # charge
-1		 # harmonics
-
-
+1.000000      # current out factor
+12045.500000      # particles out factor
+10.000000      # timming 1
+600.000000      # timming 2
+0.011068      # current factor
+0.080874      # charge factor
+1      # charge
+2      # harmonics
+D:\SlowCTController\settings_data\settings2.txt

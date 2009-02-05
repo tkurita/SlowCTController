@@ -1,9 +1,12 @@
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.event.*;
 import java.text.*;
+import java.util.prefs.*;
 
 class SettingWindow extends JFrame {
 	DecimalFormat df = new DecimalFormat("#,###");
@@ -146,11 +149,21 @@ class SettingWindow extends JFrame {
 	
 	class SaveAsAction implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			JFileChooser filechooser = new JFileChooser();
+            Preferences prefs = Preferences.userNodeForPackage(this.getClass());
+            String path = prefs.get("saveLocation", null);
+			JFileChooser filechooser = new JFileChooser(path);
+            filechooser.setSelectedFile(new File("settings.txt"));
 			int selected = filechooser.showSaveDialog(((JComponent)e.getSource()).getTopLevelAncestor());
 			if (selected == JFileChooser.APPROVE_OPTION){
-				setSettingsSource(filechooser.getSelectedFile());
+                File file_to_save = filechooser.getSelectedFile();
+				setSettingsSource(file_to_save);
 				saveData();
+                prefs.put("saveLocation", file_to_save.getParent());
+                try {
+                    prefs.flush();
+                } catch (BackingStoreException ex) {
+                    Logger.getLogger(SettingWindow.class.getName()).log(Level.SEVERE, null, ex);
+                }
 			}else if (selected == JFileChooser.CANCEL_OPTION){
 				System.out.println("キャンセルされました");
 			}else if (selected == JFileChooser.ERROR_OPTION){
@@ -169,11 +182,20 @@ class SettingWindow extends JFrame {
 
 	class ReadAction implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			JFileChooser filechooser = new JFileChooser();
+			Preferences prefs = Preferences.userNodeForPackage(this.getClass());
+            String path = prefs.get("saveLocation", null);
+            JFileChooser filechooser = new JFileChooser(path);
 			int selected = filechooser.showOpenDialog(((JComponent)e.getSource()).getTopLevelAncestor());
 			if (selected == JFileChooser.APPROVE_OPTION){
-				setSettingsSource(filechooser.getSelectedFile());
+				File file_to_read = filechooser.getSelectedFile();
+                setSettingsSource(file_to_read);
 				readDataFromSettingsSource();
+                 prefs.put("saveLocation", file_to_read.getParent());
+                try {
+                    prefs.flush();
+                } catch (BackingStoreException ex) {
+                    Logger.getLogger(SettingWindow.class.getName()).log(Level.SEVERE, null, ex);
+                }
 			}else if (selected == JFileChooser.CANCEL_OPTION){
 				System.out.println("キャンセルされました");
 			}else if (selected == JFileChooser.ERROR_OPTION){
@@ -194,6 +216,7 @@ class SettingWindow extends JFrame {
 		}
 		result = writeToCurrentSettings(br);
 		if (!result) return result;
+        appendSettingsSourceInfo();
 		result = setDataWithReader(br);
 		if (!result) return result;
 		try {
@@ -213,21 +236,55 @@ class SettingWindow extends JFrame {
 			System.out.println(e);
 			return;
 		}
-		ps.format("%f      %s\n", currentOutFactor, "# current out factor");
-		ps.printf("%f      %s\n", particleOutFactor, "# particles out factor");
-		ps.printf("%d      %s\n", harmonics, "# harmonics");
-        ps.printf("%f      %s\n", timming1, "# timming 1");
-		ps.printf("%f      %s\n", timming2, "# timming 2");
-		ps.printf("%f      %s\n", currentFactor, "# current factor");
-		ps.printf("%f      %s\n", chargeFactor, "# particle factor");
-		ps.printf("%d      %s\n", charge, "# charge");
-		ps.close();
+        String bs = System.getProperty("line.separator");
+		ps.format("%f      %s%s", currentOutFactor, "# current out factor", bs);
+		ps.printf("%f      %s%s", particleOutFactor, "# particles out factor", bs);
+        ps.printf("%f      %s%s", timming1, "# timming 1", bs);
+		ps.printf("%f      %s%s", timming2, "# timming 2", bs);
+		ps.printf("%f      %s%s", currentFactor, "# current factor", bs);
+		ps.printf("%f      %s%s", chargeFactor, "# charge factor", bs);
+		ps.printf("%d      %s%s", charge, "# charge", bs);
+		ps.printf("%d      %s%s", harmonics, "# harmonics", bs);
+        ps.close();
 	}
-	
-	public void saveData() {
-		saveDataToFile(settingsCurrentFile);
+
+    private void updateDataFromWindow() {
+        currentOutFactor = Double.parseDouble(currentOutFactorField.getText());
+        particleOutFactor = Double.parseDouble(particleOutFactorField.getText());
+        timming1 = Float.parseFloat(timming1Field.getText());
+        timming2 = Float.parseFloat(timming2Field.getText());
+        currentFactor = Double.parseDouble(currentFactorField.getText());
+        chargeFactor = Double.parseDouble(chargeFactorField.getText());
+        charge = Integer.parseInt(chargeField.getText());
+        harmonics = Integer.parseInt(harmonicsField.getText());
+    }
+
+	private void appendSettingsSourceInfo() {
+		FileOutputStream fos;
+        try {
+            fos = new FileOutputStream(settingsCurrentFile, true);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(SettingWindow.class.getName()).log(Level.SEVERE, null, ex);
+            return;
+        }
+        BufferedWriter fp = new BufferedWriter(new OutputStreamWriter(fos));
+        try {
+            fp.write(settingsSourceFile.getPath());
+            fp.newLine();
+            fp.flush();
+            fp.close();
+            fos.flush();
+            fos.close();
+        } catch (IOException ex) {
+            Logger.getLogger(SettingWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void saveData() {
+        updateDataFromWindow();
+        saveDataToFile(settingsCurrentFile);
 		if (settingsSourceFile != null) {
 			saveDataToFile(settingsSourceFile);
+            appendSettingsSourceInfo();
 		}
 	}
 	
@@ -323,6 +380,12 @@ class SettingWindow extends JFrame {
 				if ((str = reader.readLine()) == null) break;
 				setters[i].setValue(parseLine(str));
 			}
+            if ((str = reader.readLine()) != null) {
+                File source_file = new File(str);
+                if (source_file.exists()) {
+                    setSettingsSource(source_file);
+                }
+            }
 			reader.close();		
 		} catch(IOException e) {
             System.out.println(e);
