@@ -96,6 +96,7 @@ class SettingWindow extends JFrame {
 			gbc.gridwidth = 2;
             fieldarray[i].setHorizontalAlignment(JTextField.RIGHT);
 			fieldarray[i].getDocument().addDocumentListener(tlistner);
+            fieldarray[i].setInputVerifier(new NumberInputVerifier());
 			fpanel.add(fieldarray[i], gbc);
         }
 		getContentPane().add(fpanel);
@@ -156,8 +157,9 @@ class SettingWindow extends JFrame {
 			int selected = filechooser.showSaveDialog(((JComponent)e.getSource()).getTopLevelAncestor());
 			if (selected == JFileChooser.APPROVE_OPTION){
                 File file_to_save = filechooser.getSelectedFile();
-				setSettingsSource(file_to_save);
-				saveData();
+				if (!saveDataToSource(file_to_save)) {
+                    return;
+                }
                 prefs.put("saveLocation", file_to_save.getParent());
                 try {
                     prefs.flush();
@@ -175,8 +177,9 @@ class SettingWindow extends JFrame {
 	
 	class SaveAction implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			saveData();
-			save_but.setEnabled(false);
+			if (saveDataToSource(settingsSourceFile)) {;
+                save_but.setEnabled(false);
+            }
 		}
 	}
 
@@ -248,7 +251,8 @@ class SettingWindow extends JFrame {
         ps.close();
 	}
 
-    private void updateDataFromWindow() {
+    private boolean updateDataFromWindow() {
+        try {
         currentOutFactor = Double.parseDouble(currentOutFactorField.getText());
         particleOutFactor = Double.parseDouble(particleOutFactorField.getText());
         timming1 = Float.parseFloat(timming1Field.getText());
@@ -257,6 +261,13 @@ class SettingWindow extends JFrame {
         chargeFactor = Double.parseDouble(chargeFactorField.getText());
         charge = Integer.parseInt(chargeField.getText());
         harmonics = Integer.parseInt(harmonicsField.getText());
+        } catch(NumberFormatException e) {
+            UIManager.getLookAndFeel().provideErrorFeedback(this);
+            int ret = JOptionPane.showConfirmDialog (this, e, "入力が間違っています。", JOptionPane.DEFAULT_OPTION);
+            System.out.println(e);
+            return false;
+        }
+        return true;
     }
 
 	private void appendSettingsSourceInfo() {
@@ -279,13 +290,18 @@ class SettingWindow extends JFrame {
             Logger.getLogger(SettingWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void saveData() {
-        updateDataFromWindow();
+
+    public boolean saveDataToSource(File newsource) {
+        if (!updateDataFromWindow()) {
+            return false;
+        }
         saveDataToFile(settingsCurrentFile);
-		if (settingsSourceFile != null) {
-			saveDataToFile(settingsSourceFile);
+		if (newsource != null) {
+            saveDataToFile(newsource);
+            setSettingsSource(newsource);
             appendSettingsSourceInfo();
 		}
+        return true;
 	}
 	
     public static SettingWindow getInstance(MonitorWindowUI monitorWindow) {

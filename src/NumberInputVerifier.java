@@ -1,11 +1,11 @@
 import javax.swing.*;
 
-public class IntegerInputVerifier extends InputVerifier{
+public class NumberInputVerifier extends InputVerifier{
 	public boolean verify(JComponent c) {
 		boolean verified = false;
 		JTextField textField = (JTextField)c;
 		try{
-			Integer.parseInt(textField.getText());
+			Double.parseDouble(textField.getText());
 			verified = true;
 		}catch(NumberFormatException e) {
 			UIManager.getLookAndFeel().provideErrorFeedback(c);
