@@ -18,11 +18,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MonitorPanel extends javax.swing.JPanel {
-    private DspOutData dspOutData;
+    private DspOutData dspOutData = null;
 
-    void updateTimmings(float t1, float t2) {
-       timmingField1.setText(Float.toString(t1));
-       timmingField2.setText(Float.toString(t2));
+    void updateTimmings(double t1, double t2) {
+       timmingField1.setText(Double.toString(t1));
+       timmingField2.setText(Double.toString(t2));
     }
 
     public void setBSScaleMode(int mode) {
@@ -71,11 +71,11 @@ public class MonitorPanel extends javax.swing.JPanel {
     }
 
 	public void setParticlesField1(double aValue) {
-		particlesField1.setText(Double.toString(aValue));
+        particlesField1.setText(String.format("%5.3e", aValue));
 	}
 
 	public void setParticlesField2(double aValue) {
-		particlesField2.setText(Double.toString(aValue));
+        particlesField2.setText(String.format("%5.3e", aValue));
 	}
 
 	public void setBSCountField(double aValue) {
@@ -96,12 +96,21 @@ public class MonitorPanel extends javax.swing.JPanel {
         setParticlesField2(dspOutData.getParticles2());
         setBSCountField(dspOutData.getBSCount());
         setUpdateTimeField(dspOutData.getUpdatedTime());
+        updateTimmings(dspOutData.getTimming1(),dspOutData.getTimming2());
     }
 
     public boolean setupDataWithFile(File dspoutFile) {
-        DspOutData data = new DspOutData();
+        DspOutData data;
+        if (dspOutData == null) {
+            data = new DspOutData();
+        } else {
+            data = dspOutData;
+        }
+
         boolean result = data.readData(dspoutFile);
         if (result) {
+            SettingWindow w = SettingWindow.getInstance(null);
+            data.setTimmings(w.getTimming1(), w.getTimming2());
             setupData(data);
         }
         return result;

@@ -1,7 +1,7 @@
-2.781892	# current at timming 1
-0.000000	# charge at timming 1
-0.000000	# particles at timming 1
--26.010196	# current at timming 2
-0.000000	# charge at timming 2
-0.000000	# particles at timming 2
-9247.100000	# BS Counts
+50.097957	# current at timming 1
+9.987668	# charge at timming 1
+62338128545.311666	# particles at timming 1
+50.967770	# current at timming 2
+10.161422	# charge at timming 2
+63422616258.350253	# particles at timming 2
+0.000000	# BS Counts

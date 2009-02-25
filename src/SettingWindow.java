@@ -9,15 +9,16 @@ import java.text.*;
 import java.util.prefs.*;
 
 class SettingWindow extends JFrame {
-	DecimalFormat df = new DecimalFormat("#,###");
-	NumberFormat nf = NumberFormat.getNumberInstance();
-	NumberFormat inf = NumberFormat.getIntegerInstance();
+	DecimalFormat df = new DecimalFormat("####");
+	DecimalFormat nf = new DecimalFormat("####.#####");
+    //NumberFormat nf = NumberFormat.getNumberInstance();
+	//NumberFormat inf = NumberFormat.getIntegerInstance();
 	JFormattedTextField currentOutFactorField = new JFormattedTextField(nf);
     JFormattedTextField particleOutFactorField = new JFormattedTextField(nf);
-    JFormattedTextField harmonicsField = new JFormattedTextField(inf);
+    JFormattedTextField harmonicsField = new JFormattedTextField(df);
     JFormattedTextField currentFactorField = new JFormattedTextField(nf);
     JFormattedTextField chargeFactorField = new JFormattedTextField(nf);
-    JFormattedTextField chargeField = new JFormattedTextField(inf);
+    JFormattedTextField chargeField = new JFormattedTextField(df);
     JFormattedTextField timming1Field = new JFormattedTextField(nf);
     JFormattedTextField timming2Field = new JFormattedTextField(nf);
 	JButton import_but = new JButton("読み込み");
@@ -71,7 +72,7 @@ class SettingWindow extends JFrame {
             "タイミング 1",
             "タイミング 2",
             "電流 校正係数",
-            "粒子数 校正係数",
+            "電荷 校正係数",
             "価数",
             "Harmonics"
         };
@@ -96,7 +97,7 @@ class SettingWindow extends JFrame {
 			gbc.gridwidth = 2;
             fieldarray[i].setHorizontalAlignment(JTextField.RIGHT);
 			fieldarray[i].getDocument().addDocumentListener(tlistner);
-            fieldarray[i].setInputVerifier(new NumberInputVerifier());
+            //fieldarray[i].setInputVerifier(new NumberInputVerifier());
 			fpanel.add(fieldarray[i], gbc);
         }
 		getContentPane().add(fpanel);
@@ -464,7 +465,7 @@ class SettingWindow extends JFrame {
 			System.out.println(e);
 			result = false;
 		}
-        monitorWindow.updateTimmings(timming1, timming2);
+        //monitorWindow.updateTimmings(timming1, timming2);
 		return result;
 	}
 	
