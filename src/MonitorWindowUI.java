@@ -83,6 +83,7 @@ public class MonitorWindowUI extends javax.swing.JFrame {
         dspoutFile = new File("dspout.txt");
         extractionPanel.setupDataWithFile(dspoutFile);
         leakPanel.setBSScaleMode(1);
+        extractionPanel.setBSScaleMode(1);
         setupTimerTask();
     }
 
