@@ -51,7 +51,7 @@ class SettingWindow extends JFrame {
 		getContentPane().setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
 		
 		JPanel pathpanel = new JPanel(new FlowLayout());
-        pathpanel.setPreferredSize(new Dimension(400,50));
+        pathpanel.setPreferredSize(new Dimension(350,50));
 		pathpanel.add(new JLabel("設定ファイル : "));
 		pathpanel.add(settingsFileField);
 		getContentPane().add(pathpanel);
@@ -69,28 +69,29 @@ class SettingWindow extends JFrame {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         
         String lblarray[] = {
+            "価数",
+            "Harmonics",
             "電流 OUT 校正係数",
             "粒子数 OUT 校正係数",
-            "タイミング 1",
-            "タイミング 2",
             "電流 校正係数",
             "電荷 校正係数",
-            "価数",
-            "Harmonics"
+            "タイミング 1",
+            "タイミング 2"
         };
         
         JTextField fieldarray[] = {
+            chargeField,
+            harmonicsField,
             currentOutFactorField,
             particleOutFactorField,
-            timming1Field,
-            timming2Field,
             currentFactorField,
             chargeFactorField,
-            chargeField,
-            harmonicsField
+            timming1Field,
+            timming2Field
         };
         TextFieldListener tlistner = new TextFieldListener();
-        for (int i=0; i<lblarray.length; i++) {
+        int i = 0;
+        for (i=0; i<lblarray.length; i++) {
             gbc.gridx = 0;
             gbc.gridy = i;
             gbc.gridwidth = 1;
@@ -102,6 +103,10 @@ class SettingWindow extends JFrame {
             //fieldarray[i].setInputVerifier(new NumberInputVerifier());
 			fpanel.add(fieldarray[i], gbc);
         }
+        gbc.gridx = 0;
+        gbc.gridy = i+1;
+        gbc.gridwidth = 3;
+        fpanel.add(new JLabel("タイミングの時間原点は 0 msec（捕獲開始の 25msec 前）", JTextField.LEFT), gbc);
 		getContentPane().add(fpanel);
 		/*
 		gbc.gridx = 1;
