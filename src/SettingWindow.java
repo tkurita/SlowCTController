@@ -51,10 +51,12 @@ class SettingWindow extends JFrame {
 		getContentPane().setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
 		
 		JPanel pathpanel = new JPanel(new FlowLayout());
+        pathpanel.setPreferredSize(new Dimension(400,50));
 		pathpanel.add(new JLabel("設定ファイル : "));
 		pathpanel.add(settingsFileField);
 		getContentPane().add(pathpanel);
-		
+
+
 		GridBagLayout gbl_fields = new GridBagLayout();
 		JPanel fpanel = new JPanel(gbl_fields);
         
