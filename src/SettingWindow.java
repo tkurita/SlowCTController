@@ -75,8 +75,8 @@ class SettingWindow extends JFrame {
             "粒子数 OUT 校正係数",
             "電流 校正係数",
             "電荷 校正係数",
-            "タイミング 1",
-            "タイミング 2"
+            "タイミング 1 [msec]",
+            "タイミング 2 [msec]"
         };
         
         JTextField fieldarray[] = {

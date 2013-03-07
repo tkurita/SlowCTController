@@ -173,7 +173,7 @@ public class MonitorPanel extends javax.swing.JPanel {
         setFont(new java.awt.Font("MS UI Gothic", 0, 18));
         setPreferredSize(new java.awt.Dimension(600, 196));
 
-        timmingField1.setFont(new java.awt.Font("MS UI Gothic", 0, 18)); // NOI18N
+        timmingField1.setFont(new java.awt.Font("MS UI Gothic", 0, 18));
         timmingField1.setText("timmingField1");
         timmingField1.setMaximumSize(new java.awt.Dimension(120, 25));
         timmingField1.setMinimumSize(new java.awt.Dimension(100, 25));
@@ -208,8 +208,8 @@ public class MonitorPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("MS UI Gothic", 0, 18));
-        jLabel3.setText("タイミング1 :");
+        jLabel3.setFont(new java.awt.Font("MS UI Gothic", 0, 18)); // NOI18N
+        jLabel3.setText("タイミング1[msec] :");
 
         jLabel4.setFont(new java.awt.Font("MS UI Gothic", 0, 18));
         jLabel4.setText("電荷量 [nC] :");
@@ -217,13 +217,13 @@ public class MonitorPanel extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("MS UI Gothic", 0, 18));
         jLabel5.setText("粒子数 :");
 
-        particlesField1.setFont(new java.awt.Font("MS UI Gothic", 0, 18)); // NOI18N
+        particlesField1.setFont(new java.awt.Font("MS UI Gothic", 0, 18));
         particlesField1.setText("particlesField1");
         particlesField1.setMaximumSize(new java.awt.Dimension(120, 25));
         particlesField1.setPreferredSize(new java.awt.Dimension(120, 25));
 
-        jLabel6.setFont(new java.awt.Font("MS UI Gothic", 0, 18));
-        jLabel6.setText("タイミング1 :");
+        jLabel6.setFont(new java.awt.Font("MS UI Gothic", 0, 18)); // NOI18N
+        jLabel6.setText("タイミング2[msec] :");
 
         jLabel7.setFont(new java.awt.Font("MS UI Gothic", 0, 18));
         jLabel7.setText("電流 [mA] :");
@@ -234,7 +234,7 @@ public class MonitorPanel extends javax.swing.JPanel {
         jLabel9.setFont(new java.awt.Font("MS UI Gothic", 0, 18));
         jLabel9.setText("粒子数 :");
 
-        particlesField2.setFont(new java.awt.Font("MS UI Gothic", 0, 18)); // NOI18N
+        particlesField2.setFont(new java.awt.Font("MS UI Gothic", 0, 18));
         particlesField2.setText("particleField1");
 
         chargeField2.setFont(new java.awt.Font("MS UI Gothic", 0, 18));
@@ -253,7 +253,7 @@ public class MonitorPanel extends javax.swing.JPanel {
             }
         });
 
-        timmingField2.setFont(new java.awt.Font("MS UI Gothic", 0, 18)); // NOI18N
+        timmingField2.setFont(new java.awt.Font("MS UI Gothic", 0, 18));
         timmingField2.setText("timmingField2");
         timmingField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -264,22 +264,22 @@ public class MonitorPanel extends javax.swing.JPanel {
         jLabel10.setFont(new java.awt.Font("MS UI Gothic", 0, 18));
         jLabel10.setText("BS");
 
-        bsCountField.setFont(new java.awt.Font("MS UI Gothic", 0, 18)); // NOI18N
+        bsCountField.setFont(new java.awt.Font("MS UI Gothic", 0, 18));
         bsCountField.setText("bsCount");
 
         jLabel11.setFont(new java.awt.Font("MS UI Gothic", 0, 18));
         jLabel11.setText("[nC]");
 
-        bsnCField.setFont(new java.awt.Font("MS UI Gothic", 0, 18)); // NOI18N
+        bsnCField.setFont(new java.awt.Font("MS UI Gothic", 0, 18));
         bsnCField.setText("bsnC");
 
-        bsnAField.setFont(new java.awt.Font("MS UI Gothic", 0, 18)); // NOI18N
+        bsnAField.setFont(new java.awt.Font("MS UI Gothic", 0, 18));
         bsnAField.setText("bsnA");
 
         jLabel12.setFont(new java.awt.Font("MS UI Gothic", 0, 18));
         jLabel12.setText("[nA]");
 
-        bsScaleField.setFont(new java.awt.Font("MS UI Gothic", 0, 18)); // NOI18N
+        bsScaleField.setFont(new java.awt.Font("MS UI Gothic", 0, 18));
         bsScaleField.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "100 [pC/count]", "1 [pC/count]" }));
         bsScaleField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
